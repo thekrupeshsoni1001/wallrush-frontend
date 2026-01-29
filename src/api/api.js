@@ -9,14 +9,15 @@ const API = axios.create({
 ================================ */
 API.interceptors.request.use(
     (req) => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            req.headers.Authorization = `Bearer ${token}`;
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user?.token) {
+            req.headers.Authorization = `Bearer ${user.token}`;
         }
         return req;
     },
     (error) => Promise.reject(error)
 );
+
 
 /* ================================
    RESPONSE INTERCEPTOR

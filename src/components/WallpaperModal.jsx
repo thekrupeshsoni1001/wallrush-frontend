@@ -3,6 +3,7 @@ import "../styles/wallpaperModal.css";
 import { useCollections } from "../context/CollectionContext";
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../api/api";
 
 function WallpaperModal({
     photo,
@@ -168,46 +169,26 @@ function WallpaperModal({
         }
     };
 
-    const saveToDB = async () => {
-        setIsSaving(true);
+   const saveToDB = async () => {
+    setIsSaving(true);
 
-        try {
-            const token = localStorage.getItem("token");
-            if (!token) {
-                setToast({ text: "Please login first" });
-                return;
-            }
+    try {
+        await API.post("/saved/save", {
+            wallpaperId: photo.id,
+            src: photo.src.large,
+            alt: photo.alt,
+        });
 
-            const res = await fetch("http://localhost:5000/api/saved/save", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    wallpaperId: photo.id,
-                    src: photo.src.large,
-                    alt: photo.alt,
-                }),
-            });
+        setToast({ text: "Wallpaper saved ❤️" });
+        window.dispatchEvent(new Event("savedUpdated"));
+    } catch (err) {
+        console.error(err);
+        setToast({ text: "Already saved or failed" });
+    } finally {
+        setIsSaving(false);
+    }
+};
 
-            const data = await res.json();
-
-            if (!res.ok) {
-                setToast({ text: data.message || "Already saved" });
-                return;
-            }
-
-            setToast({ text: "Wallpaper saved ❤️" });
-            window.dispatchEvent(new Event("savedUpdated"));
-
-        } catch (err) {
-            console.error(err);
-            setToast({ text: "Save failed" });
-        } finally {
-            setIsSaving(false);
-        }
-    };
 
     // ✅ ADD WALLPAPER TO COLLECTION (MongoDB)
     // ✅ Add wallpaper to existing collection (MongoDB)
