@@ -1,0 +1,90 @@
+.preferences-wrapper {
+    min-height: 100vh;
+    padding: 120px 20px;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: #fff;
+}
+
+/* .back-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 30px;
+} */
+
+.preferences-container {
+    max-width: 850px;
+    margin: auto;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-top: 5px;
+    margin-bottom: 40px;
+}
+
+/* Card */
+.coming-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 50px 35px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+.glow-circle {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, #ff9f1a33, transparent 70%);
+    top: -60px;
+    right: -60px;
+    filter: blur(30px);
+}
+
+.coming-card h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.coming-card p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.coming-note {
+    display: inline-block;
+    margin-top: 20px;
+    color: #ff9f1a;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .preferences-wrapper {
+        padding: 90px 16px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .coming-card {
+        padding: 35px 20px;
+    }
+
+    .coming-card h2 {
+        font-size: 22px;
+    }
+}

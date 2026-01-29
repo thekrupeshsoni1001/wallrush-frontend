@@ -1,0 +1,103 @@
+.about-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0a0a0f, #050507);
+    color: #fff;
+    padding: 40px 20px;
+}
+
+/* HERO */
+.about-hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* 🔥 LOGO FIX */
+.about-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.about-logo img {
+    width: 280px;
+    /* ✅ Perfect size */
+    max-width: 90%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6));
+}
+
+/* TAGLINE */
+.about-tagline {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ccc;
+}
+
+/* SECTIONS */
+.about-section {
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+}
+
+.about-section h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+
+.about-section p {
+    color: #bbb;
+    line-height: 1.7;
+}
+
+/* GLASS CARD */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* FEATURES */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* TECH STACK */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tech-stack span {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+/* FOOTER */
+.about-footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #888;
+    font-size: 14px;
+}

@@ -1,0 +1,485 @@
+/* ===================== */
+/* NAVBAR BASE */
+/* ===================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    height: 72px;
+    /* FIXED: Padding reduced from 40px to 10px for left shift */
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    isolation: isolate;
+}
+
+/* ===================== */
+/* CONTRAST SHIELD */
+/* ===================== */
+
+.navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0));
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ===================== */
+/* LEFT */
+/* ===================== */
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    /* Reduced gap to keep search bar closer if needed */
+    gap: 15px;
+}
+
+/* ===================== */
+/* LOGO */
+/* ===================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    cursor: pointer;
+}
+
+.logo img {
+    height: 100%;
+    max-width: 180px;
+    object-fit: contain;
+}
+
+/* ===================== */
+/* SEARCH BAR (DESKTOP) */
+/* ===================== */
+
+.nav-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    height: 44px;
+    width: 380px;
+    padding: 0 18px 0 48px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    transition: all 0.3s ease;
+}
+
+.nav-search:hover,
+.nav-search:focus-within {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(237, 115, 0, 0.55);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.nav-search input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+
+    color: #fff;
+}
+
+.nav-search input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 6px rgba(237, 115, 0, 0.4));
+}
+
+/* ===================== */
+/* DESKTOP MENU */
+/* ===================== */
+
+.menu {
+    display: flex;
+    align-items: center;
+    /* Added some right padding to balance the desktop menu */
+    padding-right: 20px;
+
+}
+
+.menu a {
+    margin-left: 32px;
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.menu a:hover {
+    color: #ed7300;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #ed7300;
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* ===================== */
+/* VISIBILITY HELPERS */
+/* ===================== */
+
+.desktop-only {
+    display: flex;
+}
+
+/* ===================== */
+/* HAMBURGER */
+/* ===================== */
+
+.hamburger {
+    display: none;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* ===================== */
+/* MOBILE SIDE MENU */
+/* ===================== */
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(18px);
+    padding: 26px;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transition: right 0.35s ease;
+}
+
+.mobile-menu.open {
+    right: 0;
+}
+
+.mobile-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.mobile-search input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    outline: none;
+}
+
+.mobile-menu a {
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.mobile-menu a:hover {
+    color: #ed7300;
+}
+
+.mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1000;
+}
+
+/* ===================== */
+/* MOBILE BREAKPOINT */
+/* ===================== */
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-search {
+        display: none;
+    }
+
+    .navbar {
+        /* Mobile ma pan left side thodo shift rahese */
+        padding: 0 10px;
+    }
+
+    .nav-left {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* ===================== */
+/* AUTH BUTTON (SINGLE) */
+/* ===================== */
+
+.auth-btn {
+    margin-left: 20px;
+    padding: 9px 22px;
+    border-radius: 14px;
+
+    background: linear-gradient(135deg, #ed7300, #ff9f43);
+    color: #000;
+
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(237, 115, 0, 0.35);
+}
+
+.auth-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 18px rgba(237, 115, 0, 0.6);
+    background: linear-gradient(135deg, #ff9f43, #ed7300);
+}
+
+/* LOGOUT STYLE (same button, just red tone) */
+.auth-btn.logout {
+    background: rgba(255, 77, 77, 0.15);
+    color: #ff4d4d;
+    border: 1px solid rgba(255, 77, 77, 0.4);
+    box-shadow: none;
+}
+
+.auth-btn.logout:hover {
+    background: rgba(255, 77, 77, 0.25);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+}
+
+/* ===================== */
+/* MOBILE FIX */
+/* ===================== */
+
+@media (max-width: 768px) {
+    .auth-btn {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0 0;
+    }
+}
+
+/* ===================== */
+/* PROFILE ICON (After Login) */
+/* ===================== */
+
+.profile-box {
+    margin-left: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ed7300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-box:hover {
+    box-shadow: 0 0 12px rgba(237, 115, 0, 0.6);
+}
+
+.profile-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===================== */
+/* MOBILE PROFILE FIX */
+/* ===================== */
+
+@media (max-width: 768px) {
+    .profile-box {
+        margin-top: 10px;
+        align-self: flex-start;
+    }
+}
+
+/* MOBILE ONLY */
+.mobile-only {
+    display: none;
+}
+
+/* SHOW ONLY ON MOBILE */
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-profile img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid #ff9f1a;
+        cursor: pointer;
+    }
+}
+
+/* MOBILE PROFILE */
+.mobile-profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #ff9f1a;
+    cursor: pointer;
+}
+
+/* MOBILE DRAWER */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #0b0b0b;
+    padding: 25px;
+    transition: 0.4s ease;
+    z-index: 999;
+}
+
+.mobile-drawer.open {
+    right: 0;
+}
+
+.drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+}
+
+.drawer-profile {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.drawer-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ff9f1a;
+}
+
+.drawer-profile h4 {
+    margin-top: 10px;
+    color: #fff;
+}
+
+.drawer-profile p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.drawer-links span {
+    display: block;
+    padding: 12px 0;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.drawer-links span:hover {
+    color: #ff9f1a;
+}
+
+.logout-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #ff2f2f;
+}

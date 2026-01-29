@@ -1,0 +1,137 @@
+.profile-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #111, #000);
+    color: #fff;
+}
+
+/* ================= SIDEBAR ================= */
+.profile-sidebar {
+    width: 260px;
+    background: rgba(15, 15, 15, 0.96);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= PROFILE HEADER ================= */
+.profile-header {
+    text-align: center;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.profile-header img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff9f1a;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ff9f1a, #ff7b00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: bold;
+    color: #000;
+    border: 3px solid #ff9f1a;
+}
+
+.profile-header h3 {
+    margin-top: 10px;
+}
+
+.profile-header p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* ================= MENU ================= */
+.profile-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+}
+
+.profile-menu li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-menu li:hover,
+.profile-menu .active {
+    background: rgba(255, 159, 26, 0.2);
+}
+
+.profile-menu .logout {
+    margin-top: auto;
+    color: #ff4d4d;
+}
+
+/* ================= MAIN CONTENT ================= */
+.profile-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.profile-content h1 {
+    margin-bottom: 30px;
+}
+
+/* ================= CARDS ================= */
+.profile-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.profile-card {
+    background: linear-gradient(145deg, #1c1c1c, #0f0f0f);
+    padding: 25px;
+    border-radius: 18px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.profile-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(255, 159, 26, 0.25);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+    .profile-wrapper {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* HIDE SIDEBAR MENU ON MOBILE */
+    .profile-menu {
+        display: none;
+    }
+
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+}

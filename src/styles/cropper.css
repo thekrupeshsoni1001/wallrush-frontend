@@ -1,0 +1,59 @@
+.cropper-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cropper-container {
+    width: 320px;
+    height: 450px;
+    background: #111;
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Crop area */
+.cropper-container>div:first-child {
+    flex: 1;
+    position: relative;
+}
+
+/* Controls always visible */
+.cropper-controls {
+    padding-top: 10px;
+}
+
+.cropper-controls input {
+    width: 100%;
+}
+
+.cropper-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.crop-btn {
+    background: #ff9800;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #444;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}

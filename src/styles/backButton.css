@@ -1,0 +1,30 @@
+.global-back {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    z-index: 999;
+}
+
+/* Button style */
+.global-back button {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    backdrop-filter: blur(6px);
+    transition: 0.3s;
+}
+
+.global-back button:hover {
+    background: rgba(255, 159, 26, 0.9);
+}
+
+/* ✅ HIDE BACK BUTTON ON MOBILE & TABLET */
+@media (max-width: 1024px) {
+    .global-back {
+        display: none;
+    }
+}

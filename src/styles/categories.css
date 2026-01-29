@@ -1,0 +1,24 @@
+.categories-page {
+    min-height: 100vh;
+    padding: 120px 60px 80px;
+    background: radial-gradient(circle at top, #14141a, #050508 70%);
+    color: #fff;
+}
+
+.categories-page h1 {
+    font-size: 34px;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 26px;
+}
+
+@media (max-width: 768px) {
+    .categories-page {
+        padding: 90px 20px;
+    }
+}
