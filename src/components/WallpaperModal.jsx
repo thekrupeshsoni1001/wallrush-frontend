@@ -137,14 +137,10 @@ function WallpaperModal({
         try {
             const token = localStorage.getItem("token");
 
-            const res = await fetch("http://localhost:5000/api/collections", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({ name: trimmed }),
+            const res = await API.post("/collections", {
+                name: trimmed,
             });
+
 
             const data = await res.json();
 
@@ -169,25 +165,25 @@ function WallpaperModal({
         }
     };
 
-   const saveToDB = async () => {
-    setIsSaving(true);
+    const saveToDB = async () => {
+        setIsSaving(true);
 
-    try {
-        await API.post("/saved/save", {
-            wallpaperId: photo.id,
-            src: photo.src.large,
-            alt: photo.alt,
-        });
+        try {
+            await API.post("/saved/save", {
+                wallpaperId: photo.id,
+                src: photo.src.large,
+                alt: photo.alt,
+            });
 
-        setToast({ text: "Wallpaper saved ❤️" });
-        window.dispatchEvent(new Event("savedUpdated"));
-    } catch (err) {
-        console.error(err);
-        setToast({ text: "Already saved or failed" });
-    } finally {
-        setIsSaving(false);
-    }
-};
+            setToast({ text: "Wallpaper saved ❤️" });
+            window.dispatchEvent(new Event("savedUpdated"));
+        } catch (err) {
+            console.error(err);
+            setToast({ text: "Already saved or failed" });
+        } finally {
+            setIsSaving(false);
+        }
+    };
 
 
     // ✅ ADD WALLPAPER TO COLLECTION (MongoDB)
@@ -250,34 +246,34 @@ function WallpaperModal({
     };
 
 
-    const handleSave = async () => {
-        try {
-            const res = await fetch("http://localhost:5000/api/saved/save", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-                body: JSON.stringify({
-                    wallpaperId: photo.id,
-                    src: photo.src,
-                    alt: photo.alt,
-                }),
-            });
+    // const handleSave = async () => {
+    //     try {
+    //         const res = await fetch("http://localhost:5000/api/saved/save", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //             },
+    //             body: JSON.stringify({
+    //                 wallpaperId: photo.id,
+    //                 src: photo.src,
+    //                 alt: photo.alt,
+    //             }),
+    //         });
 
-            const data = await res.json();
+    //         const data = await res.json();
 
-            if (!res.ok) {
-                alert(data.message || "Already saved");
-                return;
-            }
+    //         if (!res.ok) {
+    //             alert(data.message || "Already saved");
+    //             return;
+    //         }
 
-            alert("Wallpaper saved ❤️");
-        } catch (err) {
-            console.error(err);
-            alert("Something went wrong");
-        }
-    };
+    //         alert("Wallpaper saved ❤️");
+    //     } catch (err) {
+    //         console.error(err);
+    //         alert("Something went wrong");
+    //     }
+    // };
 
 
     // const handleCreateCollection = () => {

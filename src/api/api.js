@@ -9,14 +9,18 @@ const API = axios.create({
 ================================ */
 API.interceptors.request.use(
     (req) => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (user?.token) {
-            req.headers.Authorization = `Bearer ${user.token}`;
+        const stored = localStorage.getItem("user");
+        if (stored) {
+            const parsed = JSON.parse(stored);
+            if (parsed?.token) {
+                req.headers.Authorization = `Bearer ${parsed.token}`;
+            }
         }
         return req;
     },
     (error) => Promise.reject(error)
 );
+
 
 
 /* ================================
@@ -25,15 +29,18 @@ API.interceptors.request.use(
 API.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response && error.response.status === 401) {
-            localStorage.removeItem("token");
+        if (
+            error.response &&
+            error.response.status === 401 &&
+            error.response.data?.message === "Invalid token"
+        ) {
             localStorage.removeItem("user");
-
             alert("Session expired. Please login again.");
             window.location.href = "/login";
         }
         return Promise.reject(error);
     }
 );
+
 
 export default API;
